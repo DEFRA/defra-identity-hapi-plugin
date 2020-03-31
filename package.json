@@ -33,7 +33,7 @@
     "@hapi/joi": "^15.1.1",
     "adal-node": "^0.1.28",
     "await-to-js": "^2.0.1",
-    "debug": "^3.1.0",
+    "debug": "^4.1.1",
     "lodash": "^4.17.15",
     "md5": "^2.2.1",
     "openid-client": "^2.4.5",
