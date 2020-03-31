@@ -1,6 +1,6 @@
 {
   "name": "@envage/defra-identity-hapi-plugin",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "lockfileVersion": 1,
   "requires": true,
   "dependencies": {
@@ -460,7 +460,8 @@
     "acorn": {
       "version": "7.1.1",
       "resolved": "https://registry.npmjs.org/acorn/-/acorn-7.1.1.tgz",
-      "integrity": "sha512-add7dgA5ppRPxCFJoAGfMDi7PIBXq1RtGo7BhbLaxwrXPOmw8gq48Y9ozT01hUKy9byMjlR20EJhu5zlkErEkg=="
+      "integrity": "sha512-add7dgA5ppRPxCFJoAGfMDi7PIBXq1RtGo7BhbLaxwrXPOmw8gq48Y9ozT01hUKy9byMjlR20EJhu5zlkErEkg==",
+      "dev": true
     },
     "acorn-jsx": {
       "version": "5.2.0",
@@ -7468,9 +7469,9 @@
       }
     },
     "testdouble": {
-      "version": "3.13.0",
-      "resolved": "https://registry.npmjs.org/testdouble/-/testdouble-3.13.0.tgz",
-      "integrity": "sha512-koLssZcTF1ou1hVD7rYvxOjx3xQHODDH1ajKckL8iID05Y2BEm/+U1YDrQV3lIejCqAp7uwbVNVHyhK7ikUxsg==",
+      "version": "3.13.1",
+      "resolved": "https://registry.npmjs.org/testdouble/-/testdouble-3.13.1.tgz",
+      "integrity": "sha512-3fMIiKxi64WfVyPpPH0psKLNV2VDBt2fjNOOmp9g3ZPW6CTtbpAH2GK5Y3m0uK6vkerWOK41orfWNI8R2iDCTw==",
       "dev": true,
       "requires": {
         "lodash": "^4.17.15",
