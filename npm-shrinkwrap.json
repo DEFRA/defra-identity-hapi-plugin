@@ -1,6 +1,6 @@
 {
   "name": "@envage/defra-identity-hapi-plugin",
-  "version": "5.0.0",
+  "version": "5.1.0",
   "lockfileVersion": 1,
   "requires": true,
   "dependencies": {
@@ -460,7 +460,8 @@
     "acorn": {
       "version": "7.1.1",
       "resolved": "https://registry.npmjs.org/acorn/-/acorn-7.1.1.tgz",
-      "integrity": "sha512-add7dgA5ppRPxCFJoAGfMDi7PIBXq1RtGo7BhbLaxwrXPOmw8gq48Y9ozT01hUKy9byMjlR20EJhu5zlkErEkg=="
+      "integrity": "sha512-add7dgA5ppRPxCFJoAGfMDi7PIBXq1RtGo7BhbLaxwrXPOmw8gq48Y9ozT01hUKy9byMjlR20EJhu5zlkErEkg==",
+      "dev": true
     },
     "acorn-jsx": {
       "version": "5.2.0",
@@ -882,9 +883,9 @@
       "dev": true
     },
     "await-to-js": {
-      "version": "2.0.1",
-      "resolved": "https://registry.npmjs.org/await-to-js/-/await-to-js-2.0.1.tgz",
-      "integrity": "sha512-zJIZ/G2/sghdDWRMFO2R1Qn4RBPl/OEIe2Cfiz/VXfQS0lmyZwrq4Wmxai4KpvtnsijIadzttwjaSfg1s3CcLQ=="
+      "version": "2.1.1",
+      "resolved": "https://registry.npmjs.org/await-to-js/-/await-to-js-2.1.1.tgz",
+      "integrity": "sha512-CHBC6gQGCIzjZ09tJ+XmpQoZOn4GdWePB4qUweCaKNJ0D3f115YdhmYVTZ4rMVpiJ3cFzZcTYK1VMYEICV4YXw=="
     },
     "aws-sign2": {
       "version": "0.7.0",
