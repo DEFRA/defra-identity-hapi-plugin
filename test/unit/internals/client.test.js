@@ -61,6 +61,9 @@ describe('Internals - client', () => {
 
               return mock.data.issuer
             }
+          },
+          custom: {
+            clock_tolerance: Symbol('clock tolerance')
           }
         }
       }
@@ -113,7 +116,7 @@ describe('Internals - client', () => {
         client_id: mock.args.config.clientId,
         client_secret: mock.args.config.clientSecret
       }))
-      it('should set the clock tolerance', () => expect(passed.client.clockTolerance).to.equal(300))
+      it('should set the clock tolerance', () => expect(outcome[mock.modules.openidClient.custom.clock_tolerance]).to.equal(300))
       it('should return the client', () => expect(outcome).to.be.an.instanceof(mock.data.issuer.Client))
     })
   })
