@@ -2,6 +2,9 @@
 
 All notable changes to this project will be documented in this file.
 
+## 5.10 - 16 Aug 2021
+- CIDM - 2399
+  - NPM audit fixes - updated to last version of adal-node (now deprected) , gulp will not be updated
 ## 5.2.8 - 31 Mar 2021
 - Update tests for clock_tolerance setting
 
