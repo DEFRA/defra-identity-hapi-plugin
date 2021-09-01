@@ -25,7 +25,7 @@ describe('Internals - dynamics', () => {
             endpointBase: uuid(),
             clientId: uuid(),
             clientSecret: uuid(),
-            scopes: [resourceUrlUUID]// 'insertScopeHere.micosoft.com/comeBackLater']
+            scopes: [resourceUrlUUID + '/.default']
           },
           aad: {
             authHost: uuid(),
@@ -75,12 +75,13 @@ describe('Internals - dynamics', () => {
     beforeEach(() => {
       passed = {
         acquireTokenByClientCredential: {
-          scopes: 'hallo'
+          scopes: null
         },
         ConfidentialClientApplication: {
           clientId: null,
           clientSecret: null,
-          authUrl: null
+          authUrl: null,
+          knownAuthorities: null
         }
       }
 
@@ -98,19 +99,21 @@ describe('Internals - dynamics', () => {
                 auth: {
                   clientId: clientIdDefined, // passed.ConfidentialClientApplication.clientId,
                   clientSecret: clientSecretDefined, // passed.ConfidentialClientApplication.clientSecret,
-                  authority: authUrlDefined // passed.ConfidentialClientApplication.authUrl,
+                  authority: authUrlDefined, // passed.ConfidentialClientApplication.authUrl,
+                  knownAuthorities: knownAuthoritiesDefined
                 }
               }) {
                 passed.ConfidentialClientApplication.clientId = clientIdDefined
                 passed.ConfidentialClientApplication.clientSecret = clientSecretDefined
                 passed.ConfidentialClientApplication.authUrl = authUrlDefined
+                passed.ConfidentialClientApplication.knownAuthorities = knownAuthoritiesDefined
               }
 
               acquireTokenByClientCredential ({ scopes: scopesDefined }) {
                 passed.acquireTokenByClientCredential.scopes = scopesDefined
-                // passed.acquireTokenByClientCredential.returned = mock.data.tokenResponse
-                /// console.log("Mock Data" +mock.data)
-                return mock.data.tokenResponse
+                return new Promise((resolve) => {
+                  resolve(mock.data.tokenResponse)
+                })
               }
             }
 
