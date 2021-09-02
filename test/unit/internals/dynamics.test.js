@@ -13,7 +13,7 @@ describe('Internals - dynamics', () => {
   let outcome
   let Module
   let dynamics
-
+  const resourceUrlUUID = uuid()
   const _setTestVars = () => {
     passed = {}
 
@@ -21,10 +21,11 @@ describe('Internals - dynamics', () => {
       args: {
         config: {
           dynamics: {
-            resourceUrl: uuid(),
+            resourceUrl: resourceUrlUUID,
             endpointBase: uuid(),
             clientId: uuid(),
-            clientSecret: uuid()
+            clientSecret: uuid(),
+            scopes: [resourceUrlUUID + '/.default']
           },
           aad: {
             authHost: uuid(),
@@ -34,7 +35,7 @@ describe('Internals - dynamics', () => {
       },
       data: {},
       modules: {
-        adalNode: {}
+        msalNode: {}
       }
     }
 
@@ -44,7 +45,7 @@ describe('Internals - dynamics', () => {
   }
 
   const _doRequires = () => {
-    td.replace('adal-node', mock.modules.adalNode)
+    td.replace('@azure/msal-node', mock.modules.msalNode)
 
     Module = require('../../../lib/internals/dynamics')
     dynamics = Module({ config: mock.args.config })
@@ -73,14 +74,14 @@ describe('Internals - dynamics', () => {
   describe('Token related functions', () => {
     beforeEach(() => {
       passed = {
-        authenticationContext: {
-          authUrl: null
+        acquireTokenByClientCredential: {
+          scopes: null
         },
-        acquireTokenWithClientCredentials: {
-          resourceUrl: null,
+        ConfidentialClientApplication: {
           clientId: null,
           clientSecret: null,
-          next: null
+          authUrl: null,
+          knownAuthorities: null
         }
       }
 
@@ -92,21 +93,30 @@ describe('Internals - dynamics', () => {
           }
         },
         modules: {
-          adalNode: {
-            AuthenticationContext: class {
-              constructor (authUrl) {
-                passed.authenticationContext.authUrl = authUrl
+          msalNode: {
+            ConfidentialClientApplication: class {
+              constructor ({
+                auth: {
+                  clientId: clientIdDefined, // passed.ConfidentialClientApplication.clientId,
+                  clientSecret: clientSecretDefined, // passed.ConfidentialClientApplication.clientSecret,
+                  authority: authUrlDefined, // passed.ConfidentialClientApplication.authUrl,
+                  knownAuthorities: knownAuthoritiesDefined
+                }
+              }) {
+                passed.ConfidentialClientApplication.clientId = clientIdDefined
+                passed.ConfidentialClientApplication.clientSecret = clientSecretDefined
+                passed.ConfidentialClientApplication.authUrl = authUrlDefined
+                passed.ConfidentialClientApplication.knownAuthorities = knownAuthoritiesDefined
               }
 
-              acquireTokenWithClientCredentials (resourceUrl, clientId, clientSecret, next) {
-                passed.acquireTokenWithClientCredentials.resourceUrl = resourceUrl
-                passed.acquireTokenWithClientCredentials.clientId = clientId
-                passed.acquireTokenWithClientCredentials.clientSecret = clientSecret
-                passed.acquireTokenWithClientCredentials.next = next
-
-                return next(null, mock.data.tokenResponse)
+              acquireTokenByClientCredential ({ scopes: scopesDefined }) {
+                passed.acquireTokenByClientCredential.scopes = scopesDefined
+                return new Promise((resolve) => {
+                  resolve(mock.data.tokenResponse)
+                })
               }
             }
+
           }
         }
       }
@@ -140,14 +150,12 @@ describe('Internals - dynamics', () => {
         outcome = await dynamics.getToken()
       })
 
-      it('should instantiate an authentication context', () => expect(passed.authenticationContext.authUrl).to.equal(mock.args.config.aad.authHost + '/' + mock.args.config.aad.tenantName))
+      it('should instantiate an Confidential Client Application context', () => expect(passed.ConfidentialClientApplication.authUrl).to.equal(mock.args.config.aad.authHost + '/' + mock.args.config.aad.tenantName))
       it('should fetch the token using client credentials', () => {
-        expect(passed.acquireTokenWithClientCredentials).to.include({
-          resourceUrl: mock.args.config.dynamics.resourceUrl,
-          clientId: mock.args.config.dynamics.clientId,
-          clientSecret: mock.args.config.dynamics.clientSecret
+        expect(passed.acquireTokenByClientCredential).to.include({
+          scopes: mock.args.config.dynamics.scopes
         })
-        expect(passed.acquireTokenWithClientCredentials.next).to.be.a.function()
+        // expect(passed.acquireTokenWithClientCredentials.next).to.be.a.function()
       })
       it('should return the access token', () => expect(outcome).to.equal(mock.data.tokenResponse.accessToken))
     })

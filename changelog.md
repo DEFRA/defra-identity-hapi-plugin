@@ -1,7 +1,9 @@
 # Change log
 
 All notable changes to this project will be documented in this file.
-
+## 5.10.0 - 31 Aug 2021
+- CIDM 2522 
+  - Switch from ADAL-NODE to MSAL-NODE
 ## 5.2.8 - 31 Mar 2021
 - Update tests for clock_tolerance setting
 

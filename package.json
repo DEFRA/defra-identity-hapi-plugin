@@ -28,10 +28,10 @@
     "npm": "~6.13.4"
   },
   "dependencies": {
+    "@azure/msal-node": "^1.3.0",
     "@hapi/cookie": "^11.0.0",
     "@hapi/hoek": "^9.0.3",
     "@hapi/joi": "^15.1.1",
-    "adal-node": "^0.1.28",
     "await-to-js": "^2.0.1",
     "debug": "^3.1.0",
     "got": "^10.7.0",
