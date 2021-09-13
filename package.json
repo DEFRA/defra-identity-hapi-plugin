@@ -31,11 +31,11 @@
     "@hapi/cookie": "^11.0.0",
     "@hapi/hoek": "^9.0.3",
     "@hapi/joi": "^15.1.1",
-    "adal-node": "^0.1.28",
+    "adal-node": "^0.2.2",
     "await-to-js": "^2.0.1",
     "debug": "^3.1.0",
     "got": "^10.7.0",
-    "lodash": "^4.17.20",
+    "lodash": "^4.17.21",
     "md5": "^2.2.1",
     "openid-client": "^4.2.0",
     "uuid": "^3.2.1"
