@@ -43,6 +43,10 @@ describe('Internals - client', () => {
               passed.issuerClient.options = options
             }
 
+            get CLOCK_TOLERANCE () {
+              return passed.client.clockTolerance
+            }
+
             set CLOCK_TOLERANCE (clockTolerance) {
               passed.client.clockTolerance = clockTolerance
             }
