@@ -24,32 +24,32 @@
   "author": "Department for Environment, Food & Rural Affairs",
   "license": "See LICENSE.md",
   "engines": {
-    "node": "~12.16.0",
-    "npm": "~6.13.4"
+    "node": "~16.17.0",
+    "npm": "~8.15.0"
   },
   "dependencies": {
-    "@hapi/cookie": "^11.0.0",
-    "@hapi/hoek": "^9.0.3",
-    "@hapi/joi": "^15.1.1",
-    "adal-node": "^0.2.2",
-    "await-to-js": "^2.0.1",
-    "debug": "^3.1.0",
-    "got": "^10.7.0",
+    "@hapi/cookie": "^11.0.2",
+    "@hapi/hoek": "^10.0.1",
+    "adal-node": "^0.2.3",
+    "await-to-js": "^3.0.0",
+    "debug": "^4.3.4",
+    "got": "^12.5.0",
+    "joi": "^17.6.1",
     "lodash": "^4.17.21",
-    "md5": "^2.2.1",
-    "openid-client": "^4.2.0",
-    "uuid": "^3.2.1"
+    "md5": "^2.3.0",
+    "openid-client": "^5.1.9",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
-    "@hapi/code": "^8.0.1",
-    "@hapi/lab": "^22.0.3",
-    "eslint": "^6.4.0",
-    "gulp": "^4.0.0",
+    "@hapi/code": "^9.0.1",
+    "@hapi/lab": "^25.0.1",
+    "eslint": "^8.23.1",
+    "gulp": "^4.0.2",
     "gulp-cli": "^2.3.0",
     "pre-commit": "^1.2.2",
-    "snazzy": "^7.1.1",
-    "sonarqube-scanner": "^2.6.0",
-    "standard": "^14.3.1",
-    "testdouble": "^3.13.0"
+    "snazzy": "^9.0.0",
+    "sonarqube-scanner": "^2.8.1",
+    "standard": "^17.0.0",
+    "testdouble": "^3.16.6"
   }
 }
