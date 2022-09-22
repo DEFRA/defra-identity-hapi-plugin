@@ -1,6 +1,6 @@
 const Lab = require('@hapi/lab')
 const Code = require('@hapi/code')
-const uuid = require('uuid/v4')
+const { v4: uuid } = require('uuid')
 const lab = exports.lab = Lab.script()
 
 const { describe, it, beforeEach } = lab
@@ -52,7 +52,7 @@ describe('Dynamics - create', () => {
     create = Create({ internals: mock.internals })
   })
 
-  describe('Create enrolment', async () => {
+  describe('Create enrolment', () => {
     beforeEach(async () => {
       outcome = await create.createEnrolment.buildRequest(mock.contactId, mock.connectionDetailsId, mock.enrolmentStatus, mock.organisationAccountId, mock.lobServiceId, mock.lobServiceRoleId)
     })

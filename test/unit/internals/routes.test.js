@@ -33,7 +33,7 @@ describe('Internals - routes', () => {
       })
     })
   })
-  describe('storeTokenSetResponse', async () => {
+  describe('storeTokenSetResponse', () => {
     it('should store tokenSet in cache and in cookieAuth', async () => {
       const passed = {
         cache: {
@@ -121,7 +121,7 @@ describe('Internals - routes', () => {
     })
   })
 
-  describe('handleAuthorisationError', async () => {
+  describe('handleAuthorisationError', () => {
     it('should redirect to full qualified error redirect url with error details in the url', async () => {
       const mock = {
         request: Symbol('request'),
@@ -189,7 +189,7 @@ describe('Internals - routes', () => {
     })
   })
 
-  describe('handleValidatedToken', async () => {
+  describe('handleValidatedToken', () => {
     it('should store our token and return a javascript redirect to the final redirect url', async () => {
       const passed = {
         cache: {
@@ -265,7 +265,7 @@ describe('Internals - routes', () => {
     })
   })
 
-  describe('fullyQualifiedLocalPath', async () => {
+  describe('fullyQualifiedLocalPath', () => {
     const mockAppDomain = 'https://app.domain/'
 
     const { fullyQualifiedLocalPath } = RouteMethods({

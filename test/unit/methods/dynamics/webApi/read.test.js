@@ -1,6 +1,6 @@
 const Lab = require('@hapi/lab')
 const Code = require('@hapi/code')
-const uuid = require('uuid/v4')
+const { v4: uuid } = require('uuid')
 const td = require('testdouble')
 const lab = exports.lab = Lab.script()
 
@@ -407,7 +407,7 @@ describe('Dynamics - read', () => {
       })
     })
 
-    describe('Response should parse correctly', async () => {
+    describe('Response should parse correctly', () => {
       it('for a business contact', async () => {
         const apiResponse = {
           value: [{

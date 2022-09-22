@@ -6,7 +6,7 @@ const lab = exports.lab = Lab.script()
 const { describe, it, beforeEach, afterEach } = lab
 const { expect } = Code
 
-describe('Dynamics - update', async () => {
+describe('Dynamics - update', () => {
   let mock
   let passed
   let update
